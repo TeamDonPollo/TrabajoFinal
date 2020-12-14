@@ -81,7 +81,6 @@ public class ControlRegistro extends HttpServlet {
         ses.setAttribute("nombreLogeado", c.getNombre()+" "+c.getApellido());
         ses.setAttribute("idCliente", obj.CodigoMaximoCliente());
 
-
         String pag = "/index2.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
 
@@ -105,7 +104,6 @@ public class ControlRegistro extends HttpServlet {
 
         HttpSession ses = request.getSession();
         ses.setAttribute("usuario", null);
-
         ses.setAttribute("idCliente", null);
         String pag = "/index2.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
@@ -116,6 +114,7 @@ public class ControlRegistro extends HttpServlet {
             throws ServletException, IOException {
 
         String nombre;
+
         HttpSession ses = request.getSession();
         ses.setAttribute("login", "false");
         ses.setAttribute("usuario", null);
@@ -144,15 +143,6 @@ public class ControlRegistro extends HttpServlet {
             ses.setAttribute("idCliente", c.getCodigo());
             ses.setAttribute("login", null);
             ses.setAttribute("nombreLogeado", c.getNombre()+" "+c.getApellido());
-
-        } else {
-            
-            if (c.getPassword().equals((String) request.getParameter("password"))) {
-                nombre = c.getNombre();
-                ses.setAttribute("usuario", nombre);
-                ses.setAttribute("login", null);
-            }
-
         }
 
         String pag = "/index2.jsp";
